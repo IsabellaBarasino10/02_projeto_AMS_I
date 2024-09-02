@@ -56,7 +56,7 @@ router.get('/leitura', (req, res) => {
  
 // Rota GET para atualizar dados (recomendado PUT)
 router.put('/atualizar', (req, res) => {
-  const id = req.query.identificador;
+  const id = req.query.id;
   const newName = req.query.name;
   if (!id || !newName) {
     return res.status(400).send('ID ou novo nome não fornecidos');
@@ -74,7 +74,7 @@ router.put('/atualizar', (req, res) => {
  
 // Rota GET para excluir dados (recomendado DELETE)
 router.delete('/excluir', (req, res) => {
-  const id = req.query.identificador;
+  const id = req.query.id;
   if (!id) {
     return res.status(400).send('ID não fornecido');
   }
