@@ -43,8 +43,8 @@ router.get('/leitura', (req, res) => {
   if (!id) {
     return res.status(400).send('ID não fornecido');
   }
-  connection.query('SELECT * FROM tabela WHERE id = ?', [id], (error, results) => {
-    if (error) {
+  connection.query('SELECT * FROM items WHERE id = ?', [id], (err, results) => {
+    if (err) {
       return res.status(500).send('Erro ao consultar dados');
     }
     else {
@@ -61,7 +61,7 @@ router.put('/atualizar', (req, res) => {
   if (!id || !newName) {
     return res.status(400).send('ID ou novo nome não fornecidos');
   }
-  connection.query('UPDATE tabela SET name = ? WHERE id = ?', [newName, id], (error, results) => {
+  connection.query('UPDATE items SET name = ? WHERE id = ?', [newName, id], (error, results) => {
     if (error) {
       return res.status(500).send('Erro ao atualizar dados');
     }
@@ -78,8 +78,8 @@ router.delete('/excluir', (req, res) => {
   if (!id) {
     return res.status(400).send('ID não fornecido');
   }
-  connection.query('DELETE FROM tabela WHERE id = ?', [id], (error, results) => {
-    if (error) {
+  connection.query('DELETE FROM items WHERE id = ?', [id], (err, results) => {
+    if (err) {
       return res.status(500).send('Erro ao excluir dados');
     }
     if (results.affectedRows === 0) {
