@@ -73,7 +73,7 @@ router.get('/atualizar', (req, res) => {
 });
  
 // Rota GET para excluir dados (recomendado DELETE)
-router.delete('/excluir', (req, res) => {
+router.get('/excluir', (req, res) => {
   const id = req.query.id;
   if (!id) {
     return res.status(400).send('ID não fornecido');
