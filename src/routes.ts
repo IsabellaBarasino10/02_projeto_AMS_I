@@ -55,14 +55,14 @@ router.get('/leitura', (req, res) => {
 });
  
 // Rota GET para atualizar dados (recomendado PUT)
-router.put('/atualizar', (req, res) => {
+router.get('/atualizar', (req, res) => {
   const id = req.query.id;
   const newName = req.query.name;
   if (!id || !newName) {
     return res.status(400).send('ID ou novo nome não fornecidos');
   }
-  connection.query('UPDATE items SET name = ? WHERE id = ?', [newName, id], (error, results) => {
-    if (error) {
+  connection.query('UPDATE items SET name = ? WHERE id = ?', [newName, id], (err, results) => {
+    if (err) {
       return res.status(500).send('Erro ao atualizar dados');
     }
     if (results.affectedRows === 0) {
