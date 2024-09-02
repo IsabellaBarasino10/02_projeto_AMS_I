@@ -39,7 +39,7 @@ router.post('/item', (req, res) => {
  
 // Rota GET para listar dados
 router.get('/leitura', (req, res) => {
-  const id = req.query.identificador;
+  const {id} = req.query;
   if (!id) {
     return res.status(400).send('ID não fornecido');
   }
@@ -47,8 +47,8 @@ router.get('/leitura', (req, res) => {
     if (error) {
       return res.status(500).send('Erro ao consultar dados');
     }
-    if (results.length === 0) {
-      return res.status(404).send('Dados não encontrados');
+    else {
+      return res.status(404).send(results);
     }
     res.json(results[0]);
   });
